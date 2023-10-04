@@ -2,6 +2,7 @@ import pandas as pd
 import tkinter as tk
 from tkinter import filedialog
 import datetime
+import tasks_count
 
 
 def db_frame_creation():
@@ -81,26 +82,7 @@ def main(tasks_count_loc):
 
 
 if __name__ == "__main__":
-    tasks_count = {
-        'Нога в ногу': 2,
-        'Лыжи': 2,
-        'Змейка': 1,
-        'Гусеница': 2,
-        'Лабиринт': 2,
-        'Паутинка': 2,
-        'Встреча': 2,
-        'Лабиринт 2Ш': 1,
-        '3D-куб': 2,
-        'Двойной мост': 1,
-        'Фигура': 1,
-        'Мост Леонардо': 1,
-        'Морской узел': 1,
-        'Обруч': 1,
-        'Шашлык': 2,
-        'Колобок': 1,
-        'По росту': 1,
-        'Шаман': 1,
-    }
+    tasks_count = tasks_count.tasks_count
     main(tasks_count)
     # print(len(tasks_count))
     # k = 0

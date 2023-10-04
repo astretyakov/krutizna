@@ -1,5 +1,6 @@
 import pandas as pd
 from tabulate import tabulate
+import tasks_count
 
 
 def make_tasks_dataframe():
@@ -34,32 +35,16 @@ def number_of_teams_count(people_num, teams_count_loc=None):
 if __name__ == '__main__':
     # ================ Данные по мероприятию ================
     event_date = '2023-10-05'
-    number_of_people = 100
+    number_of_people = 110
+    number_of_commands = 10  # 0 - если надо определить автоматически
     file_name = f'{event_date}. ЛК. {number_of_people} чел'
     # =======================================================
-    tasks_count = {
-        'Нога в ногу': 2,
-        'Лыжи': 2,
-        'Змейка': 1,
-        'Гусеница': 2,
-        'Лабиринт': 2,
-        'Паутинка': 2,
-        'Встреча': 2,
-        'Лабиринт 2Ш': 1,
-        '3D-куб': 2,
-        'Двойной мост': 1,
-        'Фигура': 1,
-        'Мост Леонардо': 1,
-        'Морской узел': 1,
-        'Обруч': 1,
-        'Шашлык': 2,
-        'Колобок': 1,
-        'По росту': 1,
-        'Шаман': 1,
-    }
+    tasks_count = tasks_count.tasks_count
 
-    # teams_count = number_of_teams_count(number_of_people)
-    teams_count = number_of_teams_count(number_of_people, 10)
+    if number_of_commands > 0:
+        teams_count = number_of_teams_count(number_of_people, number_of_commands)
+    else:
+        teams_count = number_of_teams_count(number_of_people)
 
     tasks_dataframe = make_tasks_dataframe()
     tasks_dataframe['Задания'] = tasks_dataframe['Задания'].apply(lambda x: x.zfill(3))

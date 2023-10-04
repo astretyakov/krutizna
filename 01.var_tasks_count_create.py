@@ -17,9 +17,15 @@ with open(file_path, 'r', encoding='utf-8') as file:
         if count.isdigit():  # Проверяем, является ли значение числом
             tasks_count[name] = int(count)
 
-# Выводим текст
+# Формируем строку вывода
 output = "tasks_count = {\n"
 for name, count in tasks_count.items():
     output += f"    '{name}': {count},\n"
 output += "}"
-print(output)
+
+# Сохраняем вывод в файл tasks_count.py
+with open('tasks_count.py', 'w', encoding='utf-8') as output_file:
+    output_file.write(output)
+
+# Выводим информацию о сохранении
+print("Файл tasks_count.py успешно сохранен.")
